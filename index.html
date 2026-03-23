@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Chaos Game 😈</title>
+
+<style>
+body {
+  font-family: 'Comic Sans MS', cursive;
+  background: linear-gradient(135deg, #0f0f1a, #2d1b69);
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
+  color: white;
+}
+
+.box {
+  background: #111;
+  padding: 30px;
+  border-radius: 20px;
+  width: 340px;
+  margin: 90px auto;
+  box-shadow: 0 0 30px rgba(0,0,0,0.7);
+  position: relative;
+}
+
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+#yes {
+  background: #00c896;
+  color: white;
+}
+
+#no {
+  background: #ff4d6d;
+  color: white;
+  position: absolute;
+}
+
+#reaction {
+  margin-top: 15px;
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2 id="question">Loading...</h2>
+  <button id="yes">Yes 😌</button>
+  <button id="no">No 😏</button>
+  <p id="reaction"></p>
+</div>
+
+<script>
+
+const questions = [
+  // Late reply vibes 📱
+  "You reply late but are online all day?",
+  "You see messages and still ignore sometimes?",
+  "You say 'busy' but scroll reels?",
+  
+  // Emotional / him vibes 💭
+  "Do You lowkey cares about me?",
+  "Do You notices small things about me?",
+  "Do You like talking to me but hide it?",
+  "Do You feel a little jealous sometimes?",
+  
+  // You vibes 💅
+  "You act chill but actually care a lot?",
+  "Do You overthink my replies?",
+  "You wait for my message sometimes?",
+  
+  // Future vibes 🔮
+  "You think something could happen between we two?",
+  "You feel this story isn't over yet?",
+  "You believe timing is the only problem?",
+  "I think you'll realize my value one day?"
+];
+
+const reactionsYes = [
+  "Too real 😭",
+  "EXPOSED 💀",
+  "You didn’t have to admit that 😏",
+  "Main character energy 🎬",
+  "This is getting emotional now 👀",
+  "Not you catching feelings 💅"
+];
+
+const reactionsNo = [
+  "Stop lying to yourself 💀",
+  "Be honest once 😭",
+  "Delulu but okay 🤡",
+  "We both know the truth 😏",
+  "Denial is strong here 🧢"
+];
+
+const endings = [
+  "He likes you… but confusion hits harder 💭",
+  "There’s something… but timing is messy ⏳",
+  "You matter more than you think 💖",
+  "It’s giving slow burn story 🔥",
+  "Not over yet… just paused 🎬",
+  "You deserve clarity, not confusion 👑"
+];
+
+let current = 0;
+
+function loadQuestion() {
+  document.getElementById("question").innerText = questions[current];
+  document.getElementById("reaction").innerText = "";
+}
+
+// YES
+document.getElementById("yes").onclick = () => {
+  let react = reactionsYes[Math.floor(Math.random() * reactionsYes.length)];
+  document.getElementById("reaction").innerText = react;
+  nextQuestion();
+};
+
+// NO runs 😈
+document.getElementById("no").onmouseover = () => {
+  let x = Math.random() * 280;
+  let y = Math.random() * 220;
+
+  let noBtn = document.getElementById("no");
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+};
+
+// If NO clicked
+document.getElementById("no").onclick = () => {
+  let react = reactionsNo[Math.floor(Math.random() * reactionsNo.length)];
+  document.getElementById("reaction").innerText = react;
+};
+
+function nextQuestion() {
+  current++;
+
+  if (current < questions.length) {
+    setTimeout(loadQuestion, 900);
+  } else {
+    showEnding();
+  }
+}
+
+function showEnding() {
+  let final = endings[Math.floor(Math.random() * endings.length)];
+
+  document.querySelector(".box").innerHTML =
+    `<h2>Analysis Complete 😈</h2>
+     <p>${final}</p>
+     <p style="font-size:12px;opacity:0.7;">(No overthinking allowed… or maybe allowed 👀)</p>
+     <button onclick="location.reload()">Play Again 🔄</button>`;
+}
+
+loadQuestion();
+
+</script>
+
+</body>
+</html>
