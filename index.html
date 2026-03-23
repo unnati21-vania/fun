@@ -35,12 +35,10 @@ button {
 
 #yes {
   background: #00c896;
-  color: white;
 }
 
 #no {
   background: #ff4d6d;
-  color: white;
   position: absolute;
 }
 
@@ -62,71 +60,102 @@ button {
 
 <script>
 
-const questions = [
-  // Late reply vibes 📱
-  "You reply late but are online all day?",
-  "You see messages and still ignore sometimes?",
-  "You say 'busy' but scroll reels?",
-  
-  // Emotional / him vibes 💭
-  "Do You lowkey cares about me?",
-  "Do You notices small things about me?",
-  "Do You like talking to me but hide it?",
-  "Do You feel a little jealous sometimes?",
-  
-  // You vibes 💅
-  "You act chill but actually care a lot?",
-  "Do You overthink my replies?",
-  "You wait for my message sometimes?",
-  
-  // Future vibes 🔮
-  "You think something could happen between we two?",
-  "You feel this story isn't over yet?",
-  "You believe timing is the only problem?",
-  "I think you'll realize my value one day?"
-];
-
-const reactionsYes = [
-  "Too real 😭",
-  "EXPOSED 💀",
-  "You didn’t have to admit that 😏",
-  "Main character energy 🎬",
-  "This is getting emotional now 👀",
-  "Not you catching feelings 💅"
-];
-
-const reactionsNo = [
-  "Stop lying to yourself 💀",
-  "Be honest once 😭",
-  "Delulu but okay 🤡",
-  "We both know the truth 😏",
-  "Denial is strong here 🧢"
+const quiz = [
+  {
+    q: "You reply late but are online all day?",
+    yes: "You saw the message… you just didn’t reply 😭",
+    no: "Be honest… notifications exist for a reason 💀"
+  },
+  {
+    q: "You see messages and still ignore sometimes?",
+    yes: "That ‘I’ll reply later’ never happens 😏",
+    no: "So you’re telling me you reply instantly? 👀"
+  },
+  {
+    q: "You say 'busy' but scroll reels?",
+    yes: "Busy… but not too busy for reels 😭",
+    no: "Hmm productivity king/queen? doubt it 💀"
+  },
+  {
+    q: "You think he lowkey cares about you?",
+    yes: "That small hope is doing a lot huh 💭",
+    no: "Or maybe you’re just protecting your heart 👀"
+  },
+  {
+    q: "You feel he notices small things about you?",
+    yes: "Those little moments stay longer than they should 💔",
+    no: "Or maybe he notices… but you pretend he doesn’t 😏"
+  },
+  {
+    q: "You think he likes talking to you but hides it?",
+    yes: "Mixed signals got you thinking twice 😭",
+    no: "Or maybe you don’t want to assume too much 👀"
+  },
+  {
+    q: "You feel he gets a little jealous sometimes?",
+    yes: "Jealousy speaks louder than words sometimes 😌",
+    no: "Or he’s just really good at hiding it 💀"
+  },
+  {
+    q: "You act chill but actually care a lot?",
+    yes: "Calm outside… chaos inside 💅",
+    no: "Teach us your power then 😭"
+  },
+  {
+    q: "You overthink his replies?",
+    yes: "One text = 10 different meanings 😭",
+    no: "So you just read and move on? impossible 💀"
+  },
+  {
+    q: "You wait for his message sometimes?",
+    yes: "That one notification matters more than others 💔",
+    no: "Or you just don’t admit it 👀"
+  },
+  {
+    q: "You think something could happen between you two?",
+    yes: "It’s giving ‘almost something’ energy 😭",
+    no: "Or maybe you’re scared to believe it 😏"
+  },
+  {
+    q: "You feel this story isn't over yet?",
+    yes: "Some stories don’t end… they pause 💭",
+    no: "Or you’re trying to force yourself to move on 💀"
+  },
+  {
+    q: "You believe timing is the only problem?",
+    yes: "Right person, wrong time hits different ⏳",
+    no: "Or maybe timing isn’t the only issue 👀"
+  },
+  {
+    q: "You think he'll realize your value one day?",
+    yes: "One day… but why not now? 💔",
+    no: "Maybe you’re learning to choose yourself instead 👑"
+  }
 ];
 
 const endings = [
-  "He likes you… but confusion hits harder 💭",
-  "There’s something… but timing is messy ⏳",
-  "You matter more than you think 💖",
-  "It’s giving slow burn story 🔥",
-  "Not over yet… just paused 🎬",
-  "You deserve clarity, not confusion 👑"
+  "He feels something… but confusion wins 💭",
+  "It’s unfinished, not over ⏳",
+  "You matter more than you realize 💖",
+  "This story has potential… but no clarity yet 👀",
+  "Slow burn or slow pain… hard to tell 🔥",
+  "You deserve consistency, not confusion 👑"
 ];
 
 let current = 0;
 
 function loadQuestion() {
-  document.getElementById("question").innerText = questions[current];
+  document.getElementById("question").innerText = quiz[current].q;
   document.getElementById("reaction").innerText = "";
 }
 
 // YES
 document.getElementById("yes").onclick = () => {
-  let react = reactionsYes[Math.floor(Math.random() * reactionsYes.length)];
-  document.getElementById("reaction").innerText = react;
+  document.getElementById("reaction").innerText = quiz[current].yes;
   nextQuestion();
 };
 
-// NO runs 😈
+// NO runs away 😈
 document.getElementById("no").onmouseover = () => {
   let x = Math.random() * 280;
   let y = Math.random() * 220;
@@ -136,29 +165,30 @@ document.getElementById("no").onmouseover = () => {
   noBtn.style.top = y + "px";
 };
 
-// If NO clicked
+// If NO somehow clicked
 document.getElementById("no").onclick = () => {
-  let react = reactionsNo[Math.floor(Math.random() * reactionsNo.length)];
-  document.getElementById("reaction").innerText = react;
+  document.getElementById("reaction").innerText = quiz[current].no;
 };
 
+// NEXT
 function nextQuestion() {
   current++;
 
-  if (current < questions.length) {
+  if (current < quiz.length) {
     setTimeout(loadQuestion, 900);
   } else {
     showEnding();
   }
 }
 
+// FINAL RESULT
 function showEnding() {
   let final = endings[Math.floor(Math.random() * endings.length)];
 
   document.querySelector(".box").innerHTML =
     `<h2>Analysis Complete 😈</h2>
      <p>${final}</p>
-     <p style="font-size:12px;opacity:0.7;">(No overthinking allowed… or maybe allowed 👀)</p>
+     <p style="font-size:12px;opacity:0.7;">(Now go overthink peacefully 💀)</p>
      <button onclick="location.reload()">Play Again 🔄</button>`;
 }
 
