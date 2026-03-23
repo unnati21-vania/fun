@@ -15,21 +15,21 @@ body {
 }
 
 .box {
-  background: #111;
-  padding: 30px;
-  border-radius: 20px;
-  width: 340px;
-  margin: 90px auto;
-  box-shadow: 0 0 30px rgba(0,0,0,0.7);
+  background: #fff;
+  padding: 35px;
+  border-radius: 35px;
+  width: 3400px;
+  margin: 900px auto;
+  box-shadow: 0 0 300px rgba(0,0,0,0.7);
   position: relative;
 }
 
 button {
-  padding: 10px 20px;
-  margin: 10px;
+  padding: 100px 200px;
+  margin: 100px;
   border: none;
-  border-radius: 10px;
-  font-size: 16px;
+  border-radius: 100px;
+  font-size: 160px;
   cursor: pointer;
 }
 
@@ -43,7 +43,7 @@ button {
 }
 
 #reaction {
-  margin-top: 15px;
+  margin-top: 40px;
   font-style: italic;
 }
 </style>
@@ -73,46 +73,46 @@ const quiz = [
   },
   {
     q: "You say 'busy' but scroll reels?",
-    yes: "Busy… but not too busy for reels 😭",
-    no: "Hmm productivity king/queen? doubt it 💀"
+    yes: "Hmm productivity king?💀",
+    no: "Busy… but not too busy for reels 😭"
   },
   {
-    q: "You think he lowkey cares about you?",
+    q: "Do You lowkey care about me?",
     yes: "That small hope is doing a lot huh 💭",
     no: "Or maybe you’re just protecting your heart 👀"
   },
   {
-    q: "You feel he notices small things about you?",
+    q: "Do You notice small things about me?",
     yes: "Those little moments stay longer than they should 💔",
     no: "Or maybe he notices… but you pretend he doesn’t 😏"
   },
   {
-    q: "You think he likes talking to you but hides it?",
+    q: "Do You like talking to me but hide it?",
     yes: "Mixed signals got you thinking twice 😭",
     no: "Or maybe you don’t want to assume too much 👀"
   },
   {
-    q: "You feel he gets a little jealous sometimes?",
-    yes: "Jealousy speaks louder than words sometimes 😌",
-    no: "Or he’s just really good at hiding it 💀"
+    q: "Do You get a little jealous sometimes?",
+    yes: "Or are you just really good at hiding it 💀",
+    no: "Jealousy speaks louder than words sometimes 😌"
   },
   {
     q: "You act chill but actually care a lot?",
-    yes: "Calm outside… chaos inside 💅",
-    no: "Teach us your power then 😭"
+    yes: "Teach us your power then 💅",
+    no: "Calm outside… chaos inside 😭"
   },
   {
-    q: "You overthink his replies?",
+    q: "You overthink my replies?",
     yes: "One text = 10 different meanings 😭",
     no: "So you just read and move on? impossible 💀"
   },
   {
-    q: "You wait for his message sometimes?",
+    q: "You wait for my message sometimes?",
     yes: "That one notification matters more than others 💔",
     no: "Or you just don’t admit it 👀"
   },
   {
-    q: "You think something could happen between you two?",
+    q: "You think something could happen between us?",
     yes: "It’s giving ‘almost something’ energy 😭",
     no: "Or maybe you’re scared to believe it 😏"
   },
@@ -127,14 +127,14 @@ const quiz = [
     no: "Or maybe timing isn’t the only issue 👀"
   },
   {
-    q: "You think he'll realize your value one day?",
+    q: "You think you'll realize my value one day?",
     yes: "One day… but why not now? 💔",
     no: "Maybe you’re learning to choose yourself instead 👑"
   }
 ];
 
 const endings = [
-  "He feels something… but confusion wins 💭",
+  " feels something… but confusion wins 💭",
   "It’s unfinished, not over ⏳",
   "You matter more than you realize 💖",
   "This story has potential… but no clarity yet 👀",
@@ -175,7 +175,7 @@ function nextQuestion() {
   current++;
 
   if (current < quiz.length) {
-    setTimeout(loadQuestion, 900);
+    setTimeout(loadQuestion, 2000);
   } else {
     showEnding();
   }
@@ -188,7 +188,7 @@ function showEnding() {
   document.querySelector(".box").innerHTML =
     `<h2>Analysis Complete 😈</h2>
      <p>${final}</p>
-     <p style="font-size:12px;opacity:0.7;">(Now go overthink peacefully 💀)</p>
+     <p style="font-size:45px;opacity:0.7;">(Now go overthink peacefully 💀)</p>
      <button onclick="location.reload()">Play Again 🔄</button>`;
 }
 
